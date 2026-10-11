@@ -1,0 +1,444 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>claude-domore Engine Map</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@400;600;700&display=swap">
+<style>
+:root{--bg:#F3F5F8;--panel:#FFFFFF;--ink:#17202C;--muted:#5B6677;--line:#CBD2DC;--daily:#0B7A73;--appr:#B25E09;--sup:#3346A8;--vm:#7A3E9D;--root:#4A5463;--red:#C23B2E;--chip:#E2E7EF;--ok:#1E7A3E;--glow:rgba(51,70,168,.14)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){color-scheme:dark;--bg:#0F141B;--panel:#171E28;--ink:#E4E9F0;--muted:#9AA5B5;--line:#344052;--daily:#3CC2B2;--appr:#F0A64A;--sup:#8FA0FF;--vm:#C98DEB;--root:#A7B1C0;--red:#FF7B6B;--chip:#243042;--ok:#5BD08A;--glow:rgba(143,160,255,.16)}}
+:root[data-theme="dark"]{color-scheme:dark;--bg:#0F141B;--panel:#171E28;--ink:#E4E9F0;--muted:#9AA5B5;--line:#344052;--daily:#3CC2B2;--appr:#F0A64A;--sup:#8FA0FF;--vm:#C98DEB;--root:#A7B1C0;--red:#FF7B6B;--chip:#243042;--ok:#5BD08A;--glow:rgba(143,160,255,.16)}
+:root[data-theme="light"] .es{--es-bg:#F3F5F8;--es-panel:#FFFFFF;--es-ink:#17202C;--es-muted:#5B6677;--es-line:#CBD2DC;--es-daily:#0B7A73;--es-appr:#B25E09;--es-sup:#3346A8;--es-vm:#7A3E9D;--es-root:#4A5463;--es-red:#C23B2E;--es-chip:#E2E7EF}
+:root[data-theme="dark"] .es{--es-bg:#0F141B;--es-panel:#171E28;--es-ink:#E4E9F0;--es-muted:#9AA5B5;--es-line:#344052;--es-daily:#3CC2B2;--es-appr:#F0A64A;--es-sup:#8FA0FF;--es-vm:#C98DEB;--es-root:#A7B1C0;--es-red:#FF7B6B;--es-chip:#243042}
+body{background:var(--bg);color:var(--ink);font:15px/1.55 "IBM Plex Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;padding-inline:16px;padding-block:28px 48px}
+.wrap{max-width:1240px;margin:0 auto;display:grid;gap:40px}
+h1,h2,h3{text-wrap:balance;margin:0;line-height:1.2}
+h1{font-size:clamp(26px,3.4vw,36px);font-weight:700;letter-spacing:-.01em}
+h2{font-size:22px;font-weight:700}
+.lede{max-width:68ch;color:var(--muted);margin:10px 0 0}
+.eyebrow{font:600 12px/1 "IBM Plex Mono",ui-monospace,Menlo,monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--sup);margin:0 0 10px}
+.mono{font-family:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace}
+a{color:var(--sup)}
+section{display:grid;gap:16px}
+.sechead{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:8px 24px}
+.sechead p{margin:0;color:var(--muted);max-width:70ch}
+figure{margin:0;display:grid;gap:10px}
+.dia{overflow-x:auto;border:1px solid var(--line);border-radius:12px;background:var(--panel)}
+.dia svg,.dia img{display:block;width:100%;min-width:980px;height:auto}
+figcaption{color:var(--muted);font-size:14px;max-width:80ch}
+/* player */
+.player{display:grid;gap:14px}
+.tabs{display:flex;flex-wrap:wrap;gap:8px}
+.tab{font:600 14px/1.2 "IBM Plex Sans",sans-serif;color:var(--ink);background:var(--panel);border:1px solid var(--line);border-radius:999px;padding:9px 16px;cursor:pointer}
+.tab[aria-selected="true"]{background:var(--sup);border-color:var(--sup);color:var(--bg)}
+.tab:focus-visible,.btn:focus-visible,select:focus-visible{outline:2px solid var(--sup);outline-offset:2px}
+.stage{position:relative;display:grid;grid-template-columns:1fr 1.15fr 1fr;gap:14px}
+.panel{background:var(--panel);border:1.5px solid var(--line);border-radius:12px;padding:14px;display:grid;gap:10px;align-content:start;transition:border-color .3s,box-shadow .3s;min-width:0}
+.panel.p-daily{border-color:color-mix(in srgb,var(--daily) 45%,var(--line))}
+.panel.p-appr{border-color:color-mix(in srgb,var(--appr) 45%,var(--line))}
+.panel.p-engine{border-color:color-mix(in srgb,var(--sup) 40%,var(--line))}
+.panel.on{box-shadow:0 0 0 4px var(--glow)}
+.ph{display:flex;justify-content:space-between;align-items:baseline;gap:8px;flex-wrap:wrap}
+.ph b{font:700 12px/1.2 "IBM Plex Mono",monospace;letter-spacing:.08em;text-transform:uppercase}
+.p-daily .ph b{color:var(--daily)}.p-engine .ph b{color:var(--sup)}.p-appr .ph b{color:var(--appr)}
+.ph span{font-size:12px;color:var(--muted)}
+.term{background:#0E131A;color:#D7DEE8;border-radius:8px;padding:10px 12px;font:12.5px/1.5 "IBM Plex Mono",ui-monospace,Menlo,monospace;min-height:150px;overflow-wrap:anywhere}
+.term div{white-space:pre-wrap}
+.term .u{color:#8FD6C9}.term .c{color:#E9B872}.term .r{color:#FF8F80}.term .d{color:#8793A4}
+.term .new{animation:typein .5s ease-out}
+@keyframes typein{from{opacity:0;transform:translateY(3px)}to{opacity:1;transform:none}}
+.box{border:1px dashed var(--line);border-radius:8px;padding:8px 10px;font:12px/1.5 "IBM Plex Mono",monospace;min-height:64px}
+.box .lbl{color:var(--muted);font-size:11px;letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px}
+.box.on{border-style:solid;border-color:var(--daily)}
+.nodes{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.node{border:1px solid var(--line);border-radius:8px;padding:8px 10px;background:var(--bg);transition:border-color .3s,background .3s,transform .3s;min-width:0}
+.node b{display:block;font-size:13px;font-weight:600}
+.node i{display:block;font:normal 11.5px/1.4 "IBM Plex Mono",monospace;color:var(--muted);overflow-wrap:anywhere}
+.node.on{border-color:var(--sup);background:color-mix(in srgb,var(--sup) 12%,var(--panel));transform:translateY(-1px)}
+.node.warn{border-color:var(--red)}
+.node.warn i{color:var(--red)}
+.entry{border:1px solid var(--line);border-radius:8px;padding:10px 12px;min-height:150px;display:grid;gap:6px;align-content:start;transition:border-color .3s}
+.entry.on{border-color:var(--appr)}
+.entry .et{font-weight:700;font-size:14px}
+.role{display:inline-block;font:700 10.5px/1 "IBM Plex Mono",monospace;letter-spacing:.06em;padding:4px 8px;border-radius:999px;background:var(--chip);color:var(--ink)}
+.role.high{background:var(--appr);color:var(--bg)}
+.entry dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:2px 10px;font:12px/1.45 "IBM Plex Mono",monospace}
+.entry dt{color:var(--muted)}.entry dd{margin:0;overflow-wrap:anywhere}
+.entry .empty{color:var(--muted);font-size:13px}
+.yk{display:flex;align-items:center;gap:12px;border:1px solid var(--line);border-radius:8px;padding:10px 12px;transition:border-color .3s}
+.yk.on{border-color:var(--appr)}
+.keyb{position:relative;width:64px;height:30px;border-radius:7px;background:#1F2630;flex:none;box-shadow:inset 0 0 0 1px #3A4452}
+.keyb::after{content:"";position:absolute;right:9px;top:7px;width:16px;height:16px;border-radius:50%;background:#6B5A3A;transition:background .3s,box-shadow .3s}
+.yk[data-s="blink"] .keyb::after{animation:blink 1s infinite}
+.yk[data-s="pin"] .keyb::after,.yk[data-s="touch"] .keyb::after{background:#F5B74A;box-shadow:0 0 12px 3px rgba(245,183,74,.7)}
+.yk[data-s="ok"] .keyb::after{background:#5BD08A}
+.yk[data-s="no"] .keyb::after{background:#FF7B6B}
+@keyframes blink{50%{background:#F5B74A;box-shadow:0 0 12px 3px rgba(245,183,74,.7)}}
+.ykt{display:grid;gap:2px;font-size:13px}
+.ykt small{color:var(--muted);font-size:12px}
+.pin{font:700 13px/1 "IBM Plex Mono",monospace;letter-spacing:.3em;color:var(--appr)}
+.overlay{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible}
+.overlay .trail{fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;opacity:.35}
+.overlay .pk{stroke:var(--panel);stroke-width:2}
+.c-ink{stroke:var(--sup);fill:var(--sup)}.c-amber{stroke:var(--appr);fill:var(--appr)}.c-red{stroke:var(--red);fill:var(--red)}
+.overlay .trail.c-ink,.overlay .trail.c-amber,.overlay .trail.c-red{fill:none}
+.track{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.track .lbl{font:600 11px/1 "IBM Plex Mono",monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-right:4px}
+.st{font:12px/1 "IBM Plex Mono",monospace;padding:6px 10px;border-radius:999px;border:1px solid var(--line);color:var(--muted);background:var(--panel);transition:all .3s}
+.st.seen{color:var(--ink)}
+.st.now{background:var(--sup);border-color:var(--sup);color:var(--bg);font-weight:600}
+.st.now.bad{background:var(--red);border-color:var(--red)}
+.cap{display:grid;grid-template-columns:auto 1fr;gap:4px 16px;align-items:start;align-content:start;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 18px;min-height:118px}
+.who{grid-row:span 2;font:700 11px/1 "IBM Plex Mono",monospace;letter-spacing:.08em;text-transform:uppercase;padding:7px 10px;border-radius:6px;background:var(--chip);white-space:nowrap}
+.who.you{background:var(--appr);color:var(--bg)}
+.who.engine{background:var(--sup);color:var(--bg)}
+.cap h3{font-size:18px}
+.cap p{margin:0;max-width:78ch}
+.ctrl{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.btn{font:600 14px/1 "IBM Plex Sans",sans-serif;padding:10px 14px;border-radius:8px;border:1px solid var(--line);background:var(--panel);color:var(--ink);cursor:pointer}
+.btn.primary{background:var(--ink);color:var(--bg);border-color:var(--ink);min-width:92px}
+.btn:disabled{opacity:.4;cursor:default}
+.prog{flex:1;min-width:120px;height:6px;border-radius:3px;background:var(--line);overflow:hidden}
+.prog i{display:block;height:100%;width:0;background:var(--sup);transition:width .4s}
+.count{font:600 13px/1 "IBM Plex Mono",monospace;color:var(--muted);font-variant-numeric:tabular-nums}
+select{font:14px "IBM Plex Sans",sans-serif;padding:8px;border-radius:8px;border:1px solid var(--line);background:var(--panel);color:var(--ink)}
+.note{font-size:13px;color:var(--muted);margin:0}
+.files{display:flex;flex-wrap:wrap;gap:8px 20px;font-size:14px;color:var(--muted)}
+@media (max-width:900px){.stage{grid-template-columns:1fr}.term{min-height:110px}}
+@media (max-width:520px){.cap{grid-template-columns:1fr}.who{grid-row:auto;justify-self:start}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+
+<div class="wrap">
+<header>
+  <p class="eyebrow">claude-domore · design as of 2026-09-30 · no engine code yet</p>
+  <h1>How the planned engine works</h1>
+  <p class="lede">The map shows the planned end-state from M1 to M5: which account does what, where data flows, and which step needs you. A second map shows the parked lab. The journeys below show the same system from your side of the screen, one step at a time.</p>
+</header>
+
+<section id="map" aria-labelledby="map-h">
+  <div class="sechead">
+    <h2 id="map-h">The end-state map</h2>
+    <p>Scroll sideways on a small screen. The file is also in the repo as <a href="end-state.svg">end-state.svg</a>.</p>
+  </div>
+  <figure>
+    <div class="dia" id="dia"><img src="end-state.svg" width="1680" height="1200" alt="claude-domore planned end-state: four OS accounts on one Mac, a deterministic supervisor, one Apple container VM per attempt, an independent grader, approvals signed with a YubiKey, a learning ladder and a parked lab."></div>
+    <figcaption>Your daily account drafts, sends bundles and can stop the engine; it cannot approve. The approval account signs decisions with the YubiKey. The supervisor, under its own account, owns all state and starts one VM per attempt. A separate grader VM runs the candidate. Learning uses only graded outcomes, and the lab stays parked.</figcaption>
+  </figure>
+</section>
+
+<section id="lab" aria-labelledby="lab-h">
+  <div class="sechead">
+    <h2 id="lab-h">The parked lab</h2>
+    <p>Its charter was decided on 2026-09-30. It stays closed until M1–M4 pass, the M5 review and your decision. File: <a href="lab.svg">lab.svg</a>.</p>
+  </div>
+  <figure>
+    <div class="dia" id="dia-lab"><img src="lab.svg" width="1400" height="860" alt="The parked lab as fixed by its charter: a lab controller and a model server on the host under their own accounts, the learner and trial runners in VMs, a separate hidden evaluator, and the path of a proposal out of the lab through your inspection and validation on the real workers."></div>
+    <figcaption>The learner may rewrite its own harness, but only inside its variant folder. The controller owns every model call, the budget and the stop switch. The evaluator returns scores only to the controller. A proposal leaves only as an export for you, and it counts only if it beats the unchanged engine when the validation stage re-tests it on the real workers.</figcaption>
+  </figure>
+</section>
+
+<section id="journeys" aria-labelledby="j-h">
+  <div class="sechead">
+    <h2 id="j-h">What it looks like from your side</h2>
+    <p>Three journeys. Press Play, or step with the buttons or the arrow keys. Task names, hashes and numbers are examples.</p>
+  </div>
+  <div class="player" id="player" tabindex="-1">
+    <div class="tabs" role="tablist" id="tabs"></div>
+    <div class="stage" id="stage">
+      <div class="panel p-daily" id="p-daily">
+        <div class="ph"><b>Your daily account</b><span>Claude Code, your terminal</span></div>
+        <div class="term" id="term" data-a="term" aria-live="polite"></div>
+        <div class="box" id="ev" data-a="ev"><div class="lbl">evidence/ (read only)</div><div id="evl"></div></div>
+      </div>
+      <div class="panel p-engine" id="p-engine">
+        <div class="ph"><b>The engine</b><span>supervisor account; you do not log in here</span></div>
+        <div class="nodes">
+          <div class="node" data-a="socket" data-n="socket"><b>Input socket</b><i></i></div>
+          <div class="node" data-a="sup" data-n="sup"><b>Supervisor</b><i></i></div>
+          <div class="node" data-a="jev" data-n="jev"><b>Jev · signal only</b><i></i></div>
+          <div class="node" data-a="quota" data-n="quota"><b>Budget + quota</b><i></i></div>
+          <div class="node" data-a="vm" data-n="vm"><b>Attempt VM + Codex</b><i></i></div>
+          <div class="node" data-a="proxy" data-n="proxy"><b>Host proxy → OpenAI</b><i></i></div>
+          <div class="node" data-a="grader" data-n="grader"><b>Grader VM + checker</b><i></i></div>
+          <div class="node" data-a="inbox" data-n="inbox"><b>Approval inbox</b><i></i></div>
+        </div>
+      </div>
+      <div class="panel p-appr" id="p-appr">
+        <div class="ph"><b>Approval account</b><span>ai-approver, via fast user switching</span></div>
+        <div class="entry" id="entry" data-a="entry"></div>
+        <div class="yk" id="yk" data-a="yk" data-s="idle"><div class="keyb" aria-hidden="true"></div><div class="ykt"><span id="ykt">YubiKey</span><small id="yks">no request</small></div></div>
+      </div>
+      <svg class="overlay" id="ov" aria-hidden="true"></svg>
+    </div>
+    <div class="track" id="track"></div>
+    <div class="cap" aria-live="polite">
+      <div class="who" id="who"></div>
+      <h3 id="stitle"></h3>
+      <p id="stext"></p>
+    </div>
+    <div class="ctrl">
+      <button class="btn" id="b-restart" type="button" title="Back to the first step">⟲ Restart</button>
+      <button class="btn" id="b-prev" type="button" title="Previous step (←)">← Back</button>
+      <button class="btn primary" id="b-play" type="button" title="Play or pause (space)">▶ Play</button>
+      <button class="btn" id="b-next" type="button" title="Next step (→)">Next →</button>
+      <div class="prog" aria-hidden="true"><i id="progi"></i></div>
+      <span class="count" id="count"></span>
+      <label class="note" for="speed">Speed</label>
+      <select id="speed"><option value="0.7">slow</option><option value="1" selected>normal</option><option value="1.5">fast</option></select>
+    </div>
+  </div>
+</section>
+
+<section aria-labelledby="src-h">
+  <h2 id="src-h">Sources</h2>
+  <p class="note">Drawn from docs/what-we-could-build.md and docs/design/ (architecture, milestone-1, jev, self-learning, unrestricted-learning). Where the map and the docs differ, the docs win.</p>
+</section>
+</div>
+
+<script>
+/* Journey data. Each step lists only what changes; the player carries the rest forward.
+   who: you | engine | both · st: task state · path: packet routes through data-a anchors
+   pc: packet colour (ink, amber = signed decision, red = stop) · ns: node status lines */
+window.JOURNEYS = [
+{id:"idea", name:"Idea to accepted patch", steps:[
+ {who:"you", t:"You describe the change", x:"In your daily account you tell Claude Code what you want. It drafts a task: the goal, the acceptance criteria and the paths that the worker may change.",
+  term:["$ claude","> The date parser drops the time zone. Please fix it.","● Drafting task T-42 …","  3 acceptance criteria · allowed: src/dates/, tests/dates/"], hi:["daily"]},
+ {who:"both", t:"The draft goes to the engine", x:"Claude Code sends the draft and a git bundle of the repo through the input socket. The kernel tells the supervisor which account sent them. The task enters as proposed. A draft approves nothing.",
+  tadd:["● Sent draft + git bundle → receipt r-118"], path:[["term","socket","sup"]], st:"proposed", ns:{socket:"from: your daily account", sup:"T-42 stored, bundle checked"}, hi:["socket","sup"]},
+ {who:"engine", t:"Jev gives a signal", x:"The repo is on your Jev allow-list, so the supervisor sends a few named, size-limited fields to Jev, after a sanitizer and a secret scan. Jev answers with probabilities: the category, and how unclear the task is. Code decides what to do with them.",
+  path:[["sup","jev","sup"]], ns:{jev:"bugfix 0.91 · unclear 0.08"}, hi:["jev"]},
+ {who:"engine", t:"An approval request appears", x:"The supervisor writes an inbox entry. It binds the spec version, the limits and a single-use nonce. Approving a task is a high-impact action, so it needs touch and PIN.",
+  path:[["sup","inbox","entry"]], ns:{inbox:"1 entry: approve T-42"}, entry:{t:"Approve task T-42", role:"high", rows:[["action","approve task"],["spec","v1 · 3f9a…c2"],["limits","2 launches · 15 min each"],["nonce","n-7c1e…"]]}, yk:{s:"idle",t:"YubiKey",m:"waiting for the approval command"}, hi:["appr","entry"]},
+ {who:"you", t:"You approve in the approval account", x:"You switch to the approval account with fast user switching. The approval command shows every field. You touch the YubiKey and type the PIN. The key signs exactly the bytes that you saw.",
+  yk:{s:"pin",t:"Touch + PIN",m:"PIN ••••"}, hi:["appr","entry","yk"]},
+ {who:"engine", t:"The supervisor checks the signature", x:"It checks the key, the touch flag, the PIN flag, the rising counter and the unused nonce. In one transaction it marks the nonce used and moves the task to ready.",
+  path:[["yk","socket","sup"]], pc:"amber", st:"ready", yk:{s:"ok",t:"Signed",m:"high credential · touch + PIN"}, ns:{socket:"from: approval account", inbox:"empty"}, entry:null, hi:["sup"]},
+ {who:"engine", t:"Launch checks, then a claim", x:"Before any launch the supervisor needs a fresh quota reading with room left, a reserved budget, containment, a held power assertion (and AC power for unattended runs), the disk reserve, and no stop. The claim gets a fencing token and counts as launch 1 of 2, the M1 cap.",
+  path:[["sup","quota","sup"]], st:"running", ns:{quota:"weekly 41 % · room left", sup:"claim #1 · launch 1 / 2"}, yk:{s:"idle",t:"YubiKey",m:"no request"}, hi:["quota","sup"]},
+ {who:"engine", t:"A fresh VM does the work", x:"The supervisor starts a new VM and copies the repo in. Codex works inside, with its own sandbox on. Its network goes only through the host proxy and its allow-list.",
+  path:[["sup","vm","proxy"]], ns:{vm:"Codex working · 06:40", proxy:"allowed: OpenAI only"}, hi:["vm","proxy"]},
+ {who:"engine", t:"The patch comes out", x:"When Codex ends, the supervisor stops the VM, so every process in it ends. It takes the patch out itself and checks the hashes and the allowed paths.",
+  path:[["vm","sup"]], st:"checking", ns:{vm:"stopped · patch: 2 files", proxy:"idle"}, hi:["vm","sup"]},
+ {who:"engine", t:"Independent grading", x:"The candidate runs in a fresh grader VM with no network. The protected checker keeps the hidden tests outside that VM and counts only the checks it saw pass. Text such as \"all tests passed\" in the output counts for nothing.",
+  path:[["sup","grader","sup"]], st:"verified_candidate", ns:{grader:"7 / 7 checks passed", vm:"no VM"}, hi:["grader"]},
+ {who:"engine", t:"Evidence, and a second request", x:"Sanitized evidence appears in your daily account. The approval account gets an entry to accept this exact patch. Raw worker output never reaches your daily account.",
+  path:[["sup","ev"],["sup","inbox","entry"]], st:"awaiting_approval", ev:["T-42 · attempt 1 · grader passed 7/7","patch 9b2e…41 · 2 files · paths ok"], entry:{t:"Accept patch for T-42", role:"high", rows:[["action","accept patch"],["patch","9b2e…41 · 2 files"],["grader","passed 7 / 7"],["nonce","n-a415…"]]}, ns:{inbox:"1 entry: accept patch", grader:"no VM"}, hi:["ev","entry"]},
+ {who:"you", t:"You read the patch and accept it", x:"The approval command shows the full patch. Control characters appear as visible escapes, so patch text cannot hide or rewrite lines on screen. You touch the key and type the PIN.",
+  yk:{s:"pin",t:"Touch + PIN",m:"PIN ••••"}, hi:["appr","entry","yk"]},
+ {who:"engine", t:"Accepted", x:"The supervisor checks the signature again and accepts the task, bound to this patch hash. An approval of this patch never covers a different patch.",
+  path:[["yk","socket","sup"]], pc:"amber", st:"accepted", yk:{s:"ok",t:"Signed",m:"high credential · touch + PIN"}, entry:null, ns:{inbox:"empty", sup:"T-42 accepted"}, hi:["sup"]},
+ {who:"engine", t:"From M2: a local commit", x:"The supervisor commits the exact verified tree on a task branch in its own clone. From M5, a push and a pull request come only after one more signed approval. From M2 the same loop also runs as an unattended queue.",
+  path:[["sup","ev"]], st:"committed", evadd:["commit 51c0… on task/T-42 (M2)"], ns:{sup:"commit on task/T-42"}, hi:["sup","ev"]}
+]},
+{id:"unclear", name:"Unclear task, failed attempt", steps:[
+ {who:"you", t:"A broad request", x:"You ask for something broad. Claude Code drafts a task, but the acceptance criteria are thin. It sends the draft and a bundle, as before.",
+  term:["$ claude","> Make the CSV importer faster.","● Drafting task T-43 …","  1 acceptance criterion · allowed: src/import/","● Sent draft + git bundle → receipt r-120"], path:[["term","socket","sup"]], st:"proposed", ns:{socket:"from: your daily account", sup:"T-43 stored"}, hi:["daily","sup"]},
+ {who:"engine", t:"Jev flags the task as unclear", x:"Jev's ambiguity signal is above the low threshold, so the task goes to needs_clarification. An unclear or missing signal never moves a task forward. The request goes to the approval inbox, and the sanitized questions to your evidence folder.",
+  path:[["sup","jev","sup","ev"]], st:"needs_clarification", ns:{jev:"performance · unclear 0.72"}, ev:["T-43 needs clarification:","  typical file size? paths to change?"], hi:["jev","ev"]},
+ {who:"you", t:"Claude drafts the answer", x:"In your daily account, Claude Code drafts an answer with you: files are up to 50 MB, and the change stays inside src/import/. It goes in as a draft. A draft is not an answer yet.",
+  tadd:["> Files up to 50 MB; stay inside src/import/.","● Sent draft answer → receipt r-121"], path:[["term","socket","sup","inbox","entry"]], entry:{t:"Confirm answer for T-43", role:"low", rows:[["action","clarification answer"],["answer","files ≤ 50 MB · paths as before"],["scope","unchanged"],["nonce","n-0b93…"]]}, ns:{inbox:"1 entry: confirm answer"}, hi:["daily","entry"]},
+ {who:"you", t:"You confirm it with a touch", x:"The answer does not change the task's scope, so a touch is enough. An answer that changed the scope would need touch + PIN. Either way, the task then needs a fresh approval.",
+  yk:{s:"touch",t:"Touch",m:"low credential, no PIN"}, hi:["appr","entry","yk"]},
+ {who:"engine", t:"New spec version, then approval", x:"The supervisor stores a new spec version, and the task goes back to proposed. You then approve the task with touch + PIN, as in the first journey, and it becomes ready.",
+  path:[["yk","socket","sup"]], pc:"amber", st:"ready", yk:{s:"ok",t:"Signed",m:"task approved · touch + PIN"}, entry:null, ns:{inbox:"empty", sup:"T-43 spec v2 · ready"}, hi:["sup"]},
+ {who:"engine", t:"Attempt 1 fails", x:"The attempt runs in a fresh VM, and the grader finds 2 of 5 checks failing. The failure is in the agent's work and the cap is not reached, so the task becomes retryable. Launch 1 of 2 is used.",
+  path:[["sup","vm","sup","grader","sup"]], st:"retryable", ns:{sup:"launch 1 / 2", vm:"stopped", grader:"3 / 5 checks passed", quota:"room left"}, warn:["grader"], evadd:["T-43 · attempt 1 · grader failed 3/5"], yk:{s:"idle",t:"YubiKey",m:"no request"}, hi:["grader"]},
+ {who:"engine", t:"One retry, chosen by code", x:"Jev suggests why the attempt failed. Code picks the next route from the routes that are still allowed. A fresh quota reading must allow it (in M1: the window at 80 % or less, and a rise of at most 2 points). Then launch 2 of 2 starts. A new spec version or an answer never resets this count.",
+  path:[["sup","jev","sup","quota","sup","vm"]], st:"running", ns:{jev:"failure: logic 0.77", quota:"fresh reading · room left", sup:"launch 2 / 2", vm:"Codex working", grader:"no VM"}, warn:[], hi:["quota","vm"]},
+ {who:"engine", t:"The cap is reached", x:"Attempt 2 fails too. The launch cap is reached, so the task is blocked with the reason cap_reached. No reset and no automatic path can launch it again.",
+  path:[["vm","sup","grader","sup","inbox","entry"]], st:"blocked", ns:{vm:"stopped", grader:"4 / 5 checks passed", sup:"T-43 blocked: cap_reached", inbox:"1 entry: blocked"}, warn:["grader","sup"], evadd:["T-43 · attempt 2 · grader failed 4/5","T-43 blocked: cap_reached (2 / 2)"], entry:{t:"T-43 is blocked", role:"high", rows:[["reason","cap_reached"],["options","cancel · new launch limit"],["evidence","2 attempts · best 4 / 5"],["nonce","n-5d20…"]]}, hi:["sup","entry"]},
+ {who:"you", t:"You decide", x:"You can cancel the task, or unblock it with a new launch authorization that names a new limit and your reason. Both need touch + PIN. Only you can do either. Claude Code can only propose a cancel, as a draft.",
+  yk:{s:"blink",t:"Waiting for you",m:"cancel or new limit: touch + PIN"}, hi:["appr","entry","yk"]}
+]},
+{id:"stops", name:"Stops, pauses, renewals", steps:[
+ {who:"engine", t:"The queue runs on its own (M2)", x:"From M2, approved tasks run unattended, one at a time, while you work on other things. You follow them through the evidence folder.",
+  term:["$ ls evidence/","T-50/  T-51/  T-52/  T-53/"], ev:["T-50 accepted","T-51 running · attempt 1","T-52, T-53 ready"], st:"running", path:[["sup","vm","proxy"]], ns:{sup:"queue: T-51 running, 2 ready", vm:"Codex working", proxy:"allowed: OpenAI only", quota:"weekly 55 %"}, hi:["engine"]},
+ {who:"you", t:"Something looks wrong, so you stop", x:"The evidence for T-51 looks odd. From your daily account you send a stop request. It needs no signature and no PIN, because it can only make the engine more careful. Claude Code may send it too.",
+  tadd:["$ domore stop --reason \"odd evidence in T-51\"","! STOP recorded → receipt r-130"], path:[["term","socket","sup"]], pc:"red", ns:{socket:"STOP from your daily account"}, hi:["daily","socket"]},
+ {who:"engine", t:"Everything halts", x:"The supervisor writes the stop first, refuses every new launch and stops the running VM. The interrupted task becomes blocked with the reason stopped. If it cannot prove that every process ended, the task goes to effect_unknown and the workspace is kept aside.",
+  path:[["sup","vm"],["sup","inbox","entry"]], pc:"red", st:"blocked", ns:{sup:"STOPPED · no launches", vm:"stopped", proxy:"idle", inbox:"1 entry: restart"}, warn:["sup"], evadd:["STOP #7 · T-51 blocked: stopped"], entry:{t:"Restart after stop #7", role:"high", rows:[["action","restart engine"],["stop","#7 · odd evidence"],["blocked","T-51 (stopped)"],["nonce","n-3e61…"]]}, hi:["sup","vm","entry"]},
+ {who:"you", t:"Only you restart", x:"After you have looked into it, you restart from the approval account with touch + PIN. The signature covers this stop entry's version, so a newer stop would make the restart fail. T-51 stays blocked until you unblock it.",
+  yk:{s:"pin",t:"Touch + PIN",m:"PIN ••••"}, path:[["yk","socket","sup"]], pc:"amber", ns:{sup:"running · T-51 still blocked", inbox:"empty", socket:"from: approval account"}, warn:[], hi:["appr","yk","sup"]},
+ {who:"engine", t:"A quota pause", x:"Later, the weekly Codex window reaches the reserve line that you keep free for your own work. The next task is blocked with the reason reserve_line, and no launch happens.",
+  path:[["sup","quota","sup"]], st:"blocked", ns:{quota:"weekly at reserve line", sup:"T-52 blocked: reserve_line"}, warn:["quota"], yk:{s:"ok",t:"Signed",m:"restart accepted"}, entry:null, hi:["quota"]},
+ {who:"engine", t:"…which ends by itself after the reset", x:"After the provider's window resets, a fresh reading shows room, and the task returns to ready on its own. Only quota reasons work this way. A cap, a grader error or a stop always needs you.",
+  path:[["sup","quota","sup"]], st:"ready", ns:{quota:"after reset: 6 %", sup:"T-52 ready"}, warn:[], yk:{s:"idle",t:"YubiKey",m:"no request"}, hi:["quota","sup"]},
+ {who:"engine", t:"Sleep, battery and disk", x:"On battery power, no new unattended launch starts. No attempt at all starts if free disk space minus the attempt's temporary storage would fall below 30 GB. The inbox shows why, and the notice clears when the condition passes. After sleep, running work counts as uncertain, and nothing is retried on its own.",
+  ns:{sup:"host not ready: on battery", inbox:"notice: on battery"}, warn:["sup"], hi:["sup","inbox"]},
+ {who:"engine", t:"Your authorization expires", x:"Your authorization for unattended runs expires after a set period (the suggestion is 7 days). The expiry moves no task: T-52 and T-53 stay ready, but no unattended launch starts. The supervisor records one event for the whole engine, and the inbox gets one renewal entry. The drift report can stop the engine, but it can never renew.",
+  path:[["sup","inbox","entry"]], st:"ready", evadd:["unattended launches paused: authorization expired"], ns:{sup:"unattended paused: authorization expired", inbox:"1 entry: renew"}, warn:["sup"], entry:{t:"Renew unattended runs", role:"high", rows:[["action","authorize unattended runs"],["period","7 days"],["limits","reserve line · launch caps"],["nonce","n-c8f2…"]]}, hi:["appr","entry"]},
+ {who:"you", t:"You renew", x:"You renew with touch + PIN in the approval account. Ready tasks can launch again, and every other launch check still applies. T-51, blocked since the stop, stays blocked. A renewal lifts no stop, resets no launch count and raises no launch limit.",
+  path:[["yk","socket","sup","vm"]], pc:"amber", yk:{s:"ok",t:"Signed",m:"high credential · touch + PIN"}, st:"running", entry:null, ns:{sup:"queue running · T-52 claimed", inbox:"empty", vm:"Codex working"}, warn:[], hi:["sup","vm"]}
+]}
+];
+</script>
+
+<script>
+(function(){
+const J = window.JOURNEYS, $ = id => document.getElementById(id), SVGNS = "http://www.w3.org/2000/svg";
+const stage = $("stage"), ov = $("ov");
+const NS0 = {socket:"waiting", sup:"idle", jev:"idle", quota:"idle", vm:"no VM", proxy:"idle", grader:"no VM", inbox:"empty"};
+const YK0 = {s:"idle", t:"YubiKey", m:"no request"};
+const BAD = new Set(["blocked", "effect_unknown"]);
+const reduce = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+let ji = 0, si = 0, playing = false, timer = null, speed = 1, raf = 0, lines = [];
+
+// Precompute one full snapshot per step, so Back and Next are exact.
+J.forEach(j => {
+  let cur = {term:[], ev:[], entry:null, yk:YK0, ns:{...NS0}, warn:[], st:null, seen:[]};
+  j.snaps = j.steps.map(s => {
+    const n = {...cur, ns:{...cur.ns}, newT:0};
+    if (s.term) { n.term = s.term.slice(); n.newT = s.term.length; }
+    if (s.tadd) { n.term = cur.term.concat(s.tadd); n.newT = s.tadd.length; }
+    if (s.ev) n.ev = s.ev.slice();
+    if (s.evadd) n.ev = cur.ev.concat(s.evadd);
+    if ("entry" in s) n.entry = s.entry;
+    if (s.yk) n.yk = s.yk;
+    if (s.ns) Object.assign(n.ns, s.ns);
+    if (s.warn) n.warn = s.warn;
+    if (s.st) { n.st = s.st; if (!cur.seen.includes(s.st)) n.seen = cur.seen.concat(s.st); }
+    n.step = s; cur = n; return n;
+  });
+  j.states = [];
+  j.steps.forEach(s => { if (s.st && !j.states.includes(s.st)) j.states.push(s.st); });
+});
+
+function lineClass(l){ return /^[>$] /.test(l) ? "u" : l.startsWith("● ") ? "c" : l.startsWith("! ") ? "r" : "d"; }
+
+function renderEntry(e, on){
+  const el = $("entry"); el.innerHTML = ""; el.classList.toggle("on", !!(on && e));
+  if (!e) { const p = document.createElement("div"); p.className = "empty"; p.textContent = "No request waiting. The approval command shows entries from inbox-view/."; el.append(p); return; }
+  const t = document.createElement("div"); t.className = "et"; t.textContent = e.t;
+  const r = document.createElement("span"); r.className = "role" + (e.role === "high" ? " high" : ""); r.style.justifySelf = "start";
+  r.textContent = e.role === "high" ? "HIGH · touch + PIN" : "LOW · touch";
+  const dl = document.createElement("dl");
+  e.rows.forEach(([k, v]) => { const dt = document.createElement("dt"); dt.textContent = k; const dd = document.createElement("dd"); dd.textContent = v; dl.append(dt, dd); });
+  el.append(t, r, dl);
+}
+
+function render(animate = true){
+  const j = J[ji], sn = j.snaps[si], s = sn.step, hi = s.hi || [];
+  const term = $("term"); term.innerHTML = "";
+  sn.term.forEach((l, k) => { const d = document.createElement("div"); d.className = lineClass(l) + (k >= sn.term.length - sn.newT && animate ? " new" : ""); d.textContent = l; term.append(d); });
+  const evl = $("evl"); evl.innerHTML = "";
+  if (!sn.ev.length) { const d = document.createElement("div"); d.style.color = "var(--muted)"; d.textContent = "nothing yet"; evl.append(d); }
+  sn.ev.forEach(l => { const d = document.createElement("div"); d.textContent = l; evl.append(d); });
+  document.querySelectorAll(".node").forEach(n => {
+    const k = n.dataset.n; n.querySelector("i").textContent = sn.ns[k];
+    n.classList.toggle("warn", sn.warn.includes(k)); n.classList.toggle("on", hi.includes(k));
+  });
+  renderEntry(sn.entry, hi.includes("entry"));
+  const yk = $("yk"); yk.dataset.s = sn.yk.s; $("ykt").textContent = sn.yk.t; $("yks").textContent = sn.yk.m; yk.classList.toggle("on", hi.includes("yk"));
+  $("p-daily").classList.toggle("on", hi.includes("daily"));
+  $("p-engine").classList.toggle("on", hi.includes("engine"));
+  $("p-appr").classList.toggle("on", hi.includes("appr"));
+  $("ev").classList.toggle("on", hi.includes("ev"));
+  const tr = $("track"); tr.innerHTML = "";
+  const lb = document.createElement("span"); lb.className = "lbl"; lb.textContent = "Task state"; tr.append(lb);
+  j.states.forEach(st => {
+    const p = document.createElement("span"); p.className = "st"; p.textContent = st;
+    if (sn.seen.includes(st)) p.classList.add("seen");
+    if (st === sn.st) { p.classList.add("now"); if (BAD.has(st)) p.classList.add("bad"); p.setAttribute("aria-current", "step"); }
+    tr.append(p);
+  });
+  const who = $("who"); who.className = "who " + (s.who === "you" ? "you" : s.who === "engine" ? "engine" : "");
+  who.textContent = s.who === "you" ? "You act" : s.who === "engine" ? "Engine acts" : "You → engine";
+  $("stitle").textContent = s.t; $("stext").textContent = s.x;
+  const n = j.steps.length;
+  $("count").textContent = (si + 1) + " / " + n;
+  $("progi").style.width = ((si + 1) / n * 100) + "%";
+  $("b-prev").disabled = si === 0; $("b-next").disabled = si === n - 1;
+  setPlayLabel();
+  drawPaths(s.path, s.pc, animate);
+}
+
+function center(a){
+  const el = stage.querySelector('[data-a="' + a + '"]'); if (!el) return null;
+  const r = el.getBoundingClientRect(), b = stage.getBoundingClientRect();
+  return [r.left - b.left + r.width / 2, r.top - b.top + r.height / 2];
+}
+function place(pts, e){
+  if (pts.length < 2) return;
+  let d = e * pts.L, k = 0;
+  while (k < pts.seg.length - 1 && d > pts.seg[k]) { d -= pts.seg[k]; k++; }
+  const f = pts.seg[k] ? Math.min(1, d / pts.seg[k]) : 1;
+  pts.dot.setAttribute("cx", pts[k][0] + (pts[k + 1][0] - pts[k][0]) * f);
+  pts.dot.setAttribute("cy", pts[k][1] + (pts[k + 1][1] - pts[k][1]) * f);
+  pts.pl.style.strokeDashoffset = pts.L * (1 - e);
+}
+function drawPaths(paths, pc, animate){
+  cancelAnimationFrame(raf); ov.innerHTML = ""; lines = [];
+  if (!paths) return;
+  const c = "c-" + (pc || "ink");
+  lines = paths.map(p => {
+    const pts = p.map(center).filter(Boolean); if (pts.length < 2) return pts;
+    const pl = document.createElementNS(SVGNS, "polyline"); pl.setAttribute("class", "trail " + c);
+    pl.setAttribute("points", pts.map(q => q.join(",")).join(" ")); ov.append(pl);
+    const dot = document.createElementNS(SVGNS, "circle"); dot.setAttribute("r", "7"); dot.setAttribute("class", "pk " + c); ov.append(dot);
+    pts.seg = []; pts.L = 0;
+    for (let k = 1; k < pts.length; k++) { const d = Math.hypot(pts[k][0] - pts[k - 1][0], pts[k][1] - pts[k - 1][1]); pts.seg.push(d); pts.L += d; }
+    pl.style.strokeDasharray = pts.L; pts.pl = pl; pts.dot = dot; return pts;
+  }).filter(p => p.length >= 2);
+  if (reduce || !animate) { lines.forEach(p => place(p, 1)); return; }
+  const longest = Math.max(...lines.map(p => p.L));
+  const dur = Math.min(3400, Math.max(900, longest / 0.5)) / speed, t0 = performance.now();
+  const tick = now => {
+    const u = Math.min(1, (now - t0) / dur), e = u < .5 ? 2 * u * u : 1 - Math.pow(-2 * u + 2, 2) / 2;
+    lines.forEach(p => place(p, e)); if (u < 1) raf = requestAnimationFrame(tick);
+  };
+  raf = requestAnimationFrame(tick);
+}
+
+const atEnd = () => si === J[ji].steps.length - 1;
+function setPlayLabel(){ $("b-play").textContent = playing ? "❚❚ Pause" : atEnd() ? "↻ Replay" : "▶ Play"; }
+function dwell(){ return (3400 + J[ji].steps[si].x.length * 40) / speed; }
+function schedule(){
+  clearTimeout(timer); if (!playing) return;
+  timer = setTimeout(() => { if (!atEnd()) { si++; render(); schedule(); } else { playing = false; setPlayLabel(); } }, dwell());
+}
+function setPlay(p){ playing = p; if (p && atEnd()) { si = 0; render(); } setPlayLabel(); schedule(); }
+function go(d){ const n = J[ji].steps.length, t = Math.max(0, Math.min(n - 1, si + d)); if (t === si) return; si = t; render(); schedule(); }
+function pick(k){
+  ji = k; si = 0; playing = false; clearTimeout(timer);
+  document.querySelectorAll(".tab").forEach((b, i) => { b.setAttribute("aria-selected", String(i === k)); b.tabIndex = i === k ? 0 : -1; });
+  render();
+}
+
+const tabs = $("tabs");
+J.forEach((j, k) => {
+  const b = document.createElement("button"); b.type = "button"; b.className = "tab"; b.id = "tab-" + j.id;
+  b.setAttribute("role", "tab"); b.textContent = (k + 1) + " · " + j.name;
+  b.addEventListener("click", () => { pick(k); try { history.replaceState(null, "", "#" + j.id); } catch (e) {} });
+  tabs.append(b);
+});
+$("b-prev").addEventListener("click", () => go(-1));
+$("b-next").addEventListener("click", () => go(1));
+$("b-play").addEventListener("click", () => setPlay(!playing));
+$("b-restart").addEventListener("click", () => { si = 0; render(); schedule(); });
+$("speed").addEventListener("change", e => { speed = parseFloat(e.target.value) || 1; schedule(); });
+$("player").addEventListener("keydown", e => {
+  if (e.target.tagName === "SELECT") return;
+  if (e.key === "ArrowRight") { e.preventDefault(); go(1); }
+  else if (e.key === "ArrowLeft") { e.preventDefault(); go(-1); }
+  else if (e.key === " " && e.target.tagName !== "BUTTON") { e.preventDefault(); setPlay(!playing); }
+});
+let rt = 0;
+window.addEventListener("resize", () => { clearTimeout(rt); rt = setTimeout(() => drawPaths(J[ji].steps[si].path, J[ji].steps[si].pc, false), 120); });
+
+const h = (location.hash || "").slice(1), start = Math.max(0, J.findIndex(j => j.id === h));
+pick(start);
+window.addEventListener("hashchange", () => { const k = J.findIndex(j => j.id === location.hash.slice(1)); if (k >= 0 && k !== ji) pick(k); });
+
+// Inline the maps when served over http(s), so they follow the page theme; file:// keeps the <img>.
+if (location.protocol !== "file:" && window.fetch) {
+  [["dia", "end-state.svg"], ["dia-lab", "lab.svg"]].forEach(([id, file]) => {
+    fetch(file).then(r => r.ok ? r.text() : Promise.reject(r.status)).then(t => {
+      const doc = new DOMParser().parseFromString(t, "image/svg+xml"), svg = doc.documentElement;
+      if (!svg || svg.nodeName !== "svg") return;
+      const host = $(id); host.innerHTML = ""; host.append(document.importNode(svg, true));
+    }).catch(() => {});
+  });
+}
+})();
+</script>

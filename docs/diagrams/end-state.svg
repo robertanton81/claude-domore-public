@@ -1,0 +1,396 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" class="es" viewBox="0 0 1680 1230" role="img" aria-label="claude-domore planned end-state: four OS accounts on one Mac, a deterministic supervisor, one Apple container VM per attempt, an independent grader, approvals signed with a YubiKey, a learning ladder and a parked lab.">
+<title>claude-domore: planned end-state (M1 to M5)</title>
+<style>
+.es{--es-bg:#F3F5F8;--es-panel:#FFFFFF;--es-ink:#17202C;--es-muted:#5B6677;--es-line:#CBD2DC;--es-daily:#0B7A73;--es-appr:#B25E09;--es-sup:#3346A8;--es-vm:#7A3E9D;--es-root:#4A5463;--es-red:#C23B2E;--es-chip:#E2E7EF}
+@media (prefers-color-scheme: dark){.es{--es-bg:#0F141B;--es-panel:#171E28;--es-ink:#E4E9F0;--es-muted:#9AA5B5;--es-line:#344052;--es-daily:#3CC2B2;--es-appr:#F0A64A;--es-sup:#8FA0FF;--es-vm:#C98DEB;--es-root:#A7B1C0;--es-red:#FF7B6B;--es-chip:#243042}}
+.es text{font-family:"IBM Plex Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;font-size:12px;fill:var(--es-ink)}
+.es .bg{fill:var(--es-bg)}
+.es .h{font-size:12.5px;font-weight:700;letter-spacing:.08em}
+.es .ttl{font-size:13px;font-weight:600}
+.es .big{font-size:22px;font-weight:700}
+.es .s{font-size:11.5px}
+.es .xs{font-size:10.5px}
+.es .m{fill:var(--es-muted)}
+.es .mono{font-family:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px}
+.es .b{font-weight:700}
+.es .card{fill:var(--es-panel);stroke:var(--es-line);stroke-width:1}
+.es .z{stroke-width:1.5}
+.es .z-daily{stroke:var(--es-daily);fill:var(--es-daily);fill-opacity:.07}
+.es .z-appr{stroke:var(--es-appr);fill:var(--es-appr);fill-opacity:.08}
+.es .z-sup{stroke:var(--es-sup);fill:var(--es-sup);fill-opacity:.06}
+.es .z-vm{stroke:var(--es-vm);fill:var(--es-vm);fill-opacity:.07}
+.es .z-root{stroke:var(--es-root);fill:var(--es-root);fill-opacity:.07}
+.es .z-open{stroke:var(--es-line);fill:none}
+.es .dash{stroke-dasharray:6 4}
+.es .c-daily{fill:var(--es-daily)}.es .c-appr{fill:var(--es-appr)}.es .c-sup{fill:var(--es-sup)}.es .c-vm{fill:var(--es-vm)}.es .c-root{fill:var(--es-root)}.es .c-red{fill:var(--es-red)}
+.es .a{fill:none;stroke-width:1.6;stroke:var(--es-ink)}
+.es .a-amber{stroke:var(--es-appr);stroke-width:2}
+.es .a-red{stroke:var(--es-red);stroke-width:2;stroke-dasharray:7 4}
+.es .a-root{stroke:var(--es-root)}
+.es .a-muted{stroke:var(--es-muted)}
+.es .ah-ink{fill:var(--es-ink)}.es .ah-amber{fill:var(--es-appr)}.es .ah-red{fill:var(--es-red)}.es .ah-root{fill:var(--es-root)}.es .ah-muted{fill:var(--es-muted)}
+.es .chip{fill:var(--es-chip)}
+.es .chipt{font-size:10px;font-weight:700;letter-spacing:.04em;fill:var(--es-ink)}
+.es .n{fill:var(--es-ink)}
+.es .nt{font-size:11px;font-weight:700;fill:var(--es-bg)}
+.es .pill{fill:var(--es-panel);stroke:var(--es-sup);stroke-width:1}
+.es .pill-side{fill:none;stroke:var(--es-line);stroke-width:1}
+.es .key{fill:var(--es-ink)}
+.es .keydot{fill:var(--es-appr)}
+.es .bar0{fill:var(--es-sup);fill-opacity:.55}
+.es .bar1{fill:var(--es-sup);fill-opacity:.35}
+.es .bar3{fill:var(--es-sup);fill-opacity:.2}
+.es .bar2{fill:var(--es-sup);fill-opacity:.15;stroke:var(--es-sup);stroke-width:1;stroke-dasharray:4 3}
+</style>
+<defs>
+<marker id="ah-ink" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path class="ah-ink" d="M0 0 L10 5 L0 10 z"/></marker>
+<marker id="ah-amber" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path class="ah-amber" d="M0 0 L10 5 L0 10 z"/></marker>
+<marker id="ah-red" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path class="ah-red" d="M0 0 L10 5 L0 10 z"/></marker>
+<marker id="ah-root" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path class="ah-root" d="M0 0 L10 5 L0 10 z"/></marker>
+<marker id="ah-muted" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path class="ah-muted" d="M0 0 L10 5 L0 10 z"/></marker>
+</defs>
+<rect class="bg" x="0" y="0" width="1680" height="1230"/>
+
+<!-- Title -->
+<text class="big" x="24" y="40">claude-domore · planned end-state</text>
+<text class="s m" x="24" y="64">One Mac, separate OS accounts. Code owns every state change and permission; models only propose work. As of 2026-09-30: no engine code yet.</text>
+
+<!-- Legend -->
+<g>
+<line class="a" x1="1100" y1="30" x2="1136" y2="30" marker-end="url(#ah-ink)"/><text class="xs m" x="1144" y="34">request or data</text>
+<line class="a a-amber" x1="1250" y1="30" x2="1286" y2="30" marker-end="url(#ah-amber)"/><text class="xs m" x="1294" y="34">signed human decision</text>
+<line class="a a-red" x1="1428" y1="30" x2="1464" y2="30" marker-end="url(#ah-red)"/><text class="xs m" x="1472" y="34">stop request</text>
+<rect class="z-open dash" x="1100" y="48" width="36" height="16" rx="3"/><text class="xs m" x="1144" y="60">fallback or parked</text>
+<rect class="chip" x="1250" y="48" width="30" height="16" rx="8"/><text class="chipt" x="1265" y="60" text-anchor="middle">M1</text><text class="xs m" x="1288" y="60">milestone that brings it</text>
+<circle class="n" cx="1437" cy="56" r="9"/><text class="nt" x="1437" y="60" text-anchor="middle">1</text><text class="xs m" x="1452" y="60">step of one task (list below)</text>
+</g>
+
+<!-- Column A: you -->
+<rect class="z z-daily" x="24" y="96" width="268" height="300" rx="10"/>
+<text class="h c-daily" x="38" y="120">YOUR DAILY ACCOUNT</text>
+<text class="mono m" x="38" y="138">daily-user · standard, no sudo</text>
+<rect class="card" x="38" y="152" width="240" height="70" rx="6"/>
+<text class="ttl" x="50" y="174">Claude Code planning session</text>
+<text class="s" x="50" y="193">on Claude Max · drafts tasks, answers</text>
+<text class="s m" x="50" y="210">can STOP · cannot approve or cancel</text>
+<rect class="card" x="38" y="232" width="240" height="52" rx="6"/>
+<text class="ttl" x="50" y="254">Target repo → git bundle</text>
+<text class="s m" x="50" y="273">the engine never runs git in your repo</text>
+<rect class="card" x="38" y="294" width="240" height="52" rx="6"/>
+<text class="ttl" x="50" y="316">Drift report, daily</text>
+<text class="s m" x="50" y="335">router security drift → sends STOP</text>
+<text class="s m" x="38" y="378">Reads evidence/ only, never raw output</text>
+
+<rect class="z z-appr" x="24" y="414" width="268" height="250" rx="10"/>
+<text class="h c-appr" x="38" y="438">APPROVAL ACCOUNT</text>
+<text class="mono m" x="38" y="456">ai-approver · fast user switching</text>
+<rect class="card" x="38" y="470" width="240" height="66" rx="6"/>
+<text class="ttl" x="50" y="492">Approval command</text>
+<text class="s" x="50" y="511">shows every field and the full patch</text>
+<text class="s m" x="50" y="527">signs exactly the bytes it showed</text>
+<rect class="card" x="38" y="546" width="240" height="66" rx="6"/>
+<rect class="key" x="50" y="566" width="44" height="24" rx="5"/><circle class="keydot" cx="84" cy="578" r="6"/>
+<text class="ttl" x="106" y="570">YubiKey (FIDO2)</text>
+<text class="s" x="106" y="588">low role: touch</text>
+<text class="s" x="106" y="604">high role: touch + PIN</text>
+<text class="s m" x="38" y="644">Reads inbox-view/ only</text>
+
+<rect class="z z-root dash" x="24" y="682" width="268" height="88" rx="10"/>
+<text class="h c-root" x="38" y="706">ADMIN ACCOUNT</text>
+<text class="mono m" x="38" y="724">admin-user</text>
+<text class="s" x="38" y="744">installs the runtime folder, keys, policies</text>
+<text class="s m" x="38" y="760">never part of the task loop</text>
+
+<!-- Column B: exchange -->
+<rect class="z z-root" x="376" y="96" width="180" height="524" rx="10"/>
+<text class="h c-root" x="390" y="120">EXCHANGE</text>
+<text class="s m" x="390" y="138">root-owned parent folder</text>
+<rect class="card" x="390" y="164" width="152" height="176" rx="6"/>
+<text class="mono b" x="400" y="186">socket/</text>
+<text class="s" x="400" y="204">INPUT: one Unix socket</text>
+<text class="s" x="400" y="222">the kernel names the</text>
+<text class="s" x="400" y="238">caller, not the message</text>
+<text class="s m" x="400" y="264">daily: drafts, bundles,</text>
+<text class="s m" x="400" y="280">STOP, allow-list removal</text>
+<text class="s m" x="400" y="304">approver: signed</text>
+<text class="s m" x="400" y="320">decisions only</text>
+<rect class="card" x="390" y="360" width="152" height="110" rx="6"/>
+<text class="mono b" x="400" y="382">evidence/</text>
+<text class="s" x="400" y="400">OUTPUT → daily</text>
+<text class="s m" x="400" y="418">sanitized evidence,</text>
+<text class="s m" x="400" y="434">review packets (M2)</text>
+<text class="s m" x="400" y="452">no raw output</text>
+<rect class="card" x="390" y="490" width="152" height="110" rx="6"/>
+<text class="mono b" x="400" y="512">inbox-view/</text>
+<text class="s" x="400" y="530">OUTPUT → approver</text>
+<text class="s m" x="400" y="548">canonical record:</text>
+<text class="s m" x="400" y="564">hash, spec version,</text>
+<text class="s m" x="400" y="580">limits, nonce, role</text>
+
+<!-- Column C: supervisor -->
+<rect class="z z-sup" x="596" y="96" width="520" height="690" rx="10"/>
+<text class="h c-sup" x="612" y="120">SUPERVISOR ACCOUNT · _cdsupervisor</text>
+<text class="s m" x="612" y="138">LaunchDaemon, no login · each loop starts by reconciling with what really happened</text>
+<g>
+<rect class="card" x="612" y="152" width="240" height="92" rx="6"/>
+<text class="ttl" x="624" y="174">1 · Intake + clarification</text>
+<text class="s" x="624" y="193">criteria, allowed paths, size bound</text>
+<text class="s" x="624" y="210">Jev ambiguity check before approval</text>
+<text class="s m" x="624" y="227">unclear → needs_clarification</text>
+<rect class="chip" x="812" y="160" width="32" height="16" rx="8"/><text class="chipt" x="828" y="172" text-anchor="middle">M1</text>
+<rect class="card" x="612" y="252" width="240" height="92" rx="6"/>
+<text class="ttl" x="624" y="274">2 · State DB + scheduler</text>
+<text class="s" x="624" y="293">SQLite, one transaction per move</text>
+<text class="s" x="624" y="310">fencing token on every claim</text>
+<text class="s m" x="624" y="327">launch cap per task (M1: 2)</text>
+<rect class="chip" x="812" y="260" width="32" height="16" rx="8"/><text class="chipt" x="828" y="272" text-anchor="middle">M1</text>
+<rect class="card" x="612" y="352" width="240" height="92" rx="6"/>
+<text class="ttl" x="624" y="374">6 · Budget + quota</text>
+<text class="s" x="624" y="393">used + reserved + reserve line ≤ 100</text>
+<text class="s" x="624" y="410">M1 runs: start ≤ 80 %; +2 pts halts</text>
+<text class="s m" x="624" y="427">host: awake · AC if unattended · disk</text>
+<rect class="chip" x="812" y="360" width="32" height="16" rx="8"/><text class="chipt" x="828" y="372" text-anchor="middle">M1</text>
+<rect class="card" x="612" y="452" width="240" height="92" rx="6"/>
+<text class="ttl" x="624" y="474">7 · Approval inbox</text>
+<text class="s" x="624" y="493">checks signature, touch, PIN flags</text>
+<text class="s" x="624" y="510">nonce once · counter if key has one</text>
+<text class="s m" x="624" y="527">unattended authorization expires</text>
+<rect class="chip" x="812" y="460" width="32" height="16" rx="8"/><text class="chipt" x="828" y="472" text-anchor="middle">M1</text>
+<rect class="card" x="862" y="152" width="240" height="92" rx="6"/>
+<text class="ttl" x="874" y="174">3 · Provider adapters</text>
+<text class="s" x="874" y="193">codex exec · clean env, pinned paths</text>
+<text class="s" x="874" y="210">Codex login checked before launch</text>
+<text class="s m" x="874" y="227">claude -p: off until Decision 6</text>
+<rect class="chip" x="1062" y="160" width="32" height="16" rx="8"/><text class="chipt" x="1078" y="172" text-anchor="middle">M1</text>
+<rect class="card" x="862" y="252" width="240" height="92" rx="6"/>
+<text class="ttl" x="874" y="274">4 · Workspace + processes</text>
+<text class="s" x="874" y="293">one VM per attempt; stop ends all</text>
+<text class="s" x="874" y="310">the supervisor moves repo and patch</text>
+<text class="s m" x="874" y="327">unsure → quarantine, effect_unknown</text>
+<rect class="chip" x="1062" y="260" width="32" height="16" rx="8"/><text class="chipt" x="1078" y="272" text-anchor="middle">M1</text>
+<rect class="card" x="862" y="352" width="240" height="92" rx="6"/>
+<text class="ttl" x="874" y="374">5 · Independent grader</text>
+<text class="s" x="874" y="393">protected checker + hidden checks</text>
+<text class="s" x="874" y="410">regression suite for each task</text>
+<text class="s m" x="874" y="427">counts only checks it saw pass</text>
+<rect class="chip" x="1062" y="360" width="32" height="16" rx="8"/><text class="chipt" x="1078" y="372" text-anchor="middle">M1</text>
+<rect class="card" x="862" y="452" width="240" height="92" rx="6"/>
+<text class="ttl" x="874" y="474">8 · Learning registry</text>
+<text class="s" x="874" y="493">versioned artifacts with rollback</text>
+<text class="s" x="874" y="510">learns only from graded outcomes</text>
+<text class="s m" x="874" y="527">changes what it tries, not its rights</text>
+<rect class="chip" x="1040" y="460" width="54" height="16" rx="8"/><text class="chipt" x="1067" y="472" text-anchor="middle">M3–M4</text>
+</g>
+
+<rect class="card" x="612" y="556" width="490" height="96" rx="6"/>
+<text class="mono b" x="624" y="578">/opt/claude-domore-data</text><text class="s m" x="800" y="578">mode 700, supervisor only</text>
+<text class="s" x="624" y="598">state DB · evidence · attempt folders · raw output (kept 90 days)</text>
+<text class="s" x="624" y="616">own git clone = source archive, never pruned · hidden test versions</text>
+<text class="s m" x="624" y="634">secrets/: the engine's Jev key, mode 0600, left out of backups</text>
+
+<text class="h c-sup" x="612" y="676">TASK STATES</text><text class="s m" x="728" y="676">code checks the guard of every move</text>
+<g>
+<rect class="pill" x="612" y="684" width="63" height="20" rx="10"/><text class="mono" x="643.5" y="698" text-anchor="middle">proposed</text>
+<text class="s m" x="684" y="698" text-anchor="middle">→</text>
+<rect class="pill" x="693" y="684" width="44" height="20" rx="10"/><text class="mono" x="715" y="698" text-anchor="middle">ready</text>
+<text class="s m" x="746" y="698" text-anchor="middle">→</text>
+<rect class="pill" x="755" y="684" width="57" height="20" rx="10"/><text class="mono" x="783.5" y="698" text-anchor="middle">running</text>
+<text class="s m" x="821" y="698" text-anchor="middle">→</text>
+<rect class="pill" x="830" y="684" width="63" height="20" rx="10"/><text class="mono" x="861.5" y="698" text-anchor="middle">checking</text>
+<text class="s m" x="902" y="698" text-anchor="middle">→</text>
+<rect class="pill" x="911" y="684" width="127" height="20" rx="10"/><text class="mono" x="974.5" y="698" text-anchor="middle">verified_candidate</text>
+<text class="s m" x="1047" y="698" text-anchor="middle">→</text>
+<rect class="pill" x="612" y="712" width="121" height="20" rx="10"/><text class="mono" x="672.5" y="726" text-anchor="middle">awaiting_approval</text>
+<text class="s m" x="742" y="726" text-anchor="middle">→</text>
+<rect class="pill" x="751" y="712" width="63" height="20" rx="10"/><text class="mono" x="782.5" y="726" text-anchor="middle">accepted</text>
+<text class="s m" x="823" y="726" text-anchor="middle">→</text>
+<rect class="pill" x="832" y="712" width="76" height="20" rx="10"/><text class="mono" x="870" y="726" text-anchor="middle">committing</text>
+<text class="s m" x="917" y="726" text-anchor="middle">→</text>
+<rect class="pill" x="926" y="712" width="70" height="20" rx="10"/><text class="mono" x="961" y="726" text-anchor="middle">committed</text>
+<rect class="chip" x="1004" y="714" width="30" height="16" rx="8"/><text class="chipt" x="1019" y="726" text-anchor="middle">M2</text>
+<text class="s m" x="612" y="752">M5 adds the push and PR states. Side states:</text>
+<text class="mono m" x="612" y="770">needs_clarification · retryable · blocked · cancelled · effect_unknown</text>
+</g>
+
+<!-- Runtime folder -->
+<rect class="z z-root" x="596" y="806" width="520" height="84" rx="10"/>
+<text class="h c-root" x="612" y="828">RUNTIME FOLDER · /opt/claude-domore</text>
+<text class="s" x="612" y="848">root-owned; no account in the task loop can change what runs</text>
+<text class="mono m" x="612" y="870">python/ 3.14.7 · container/ 1.5.0 · fido/ · approval-policy/ · manifest/</text>
+
+<!-- Column D: VMs -->
+<rect class="z z-vm" x="1156" y="96" width="280" height="644" rx="10"/>
+<text class="h c-vm" x="1170" y="120">APPLE container VMs</text>
+<text class="s m" x="1170" y="138">stopping a VM ends every process in it</text>
+<rect class="card" x="1170" y="152" width="252" height="170" rx="6"/>
+<text class="ttl" x="1182" y="174">Attempt VM · one per attempt</text>
+<text class="s" x="1182" y="193">Linux Codex, own sandbox in full mode</text>
+<text class="s" x="1182" y="210">approval_policy = never</text>
+<text class="s m" x="1182" y="227">no writable host folder</text>
+<rect class="z z-vm" x="1182" y="240" width="228" height="70" rx="5"/>
+<text class="ttl" x="1194" y="260">Credential volume</text>
+<text class="s" x="1194" y="278">your ChatGPT login, typed once</text>
+<text class="s m" x="1194" y="295">in a guest; the engine never reads it</text>
+<rect class="card" x="1170" y="336" width="252" height="78" rx="6"/>
+<text class="ttl" x="1182" y="358">Host proxy · host-only network</text>
+<text class="s" x="1182" y="377">allow-list; DNS only for listed names</text>
+<text class="s m" x="1182" y="394">fail closed; blocks host and private IPs</text>
+<rect class="card" x="1170" y="428" width="252" height="86" rx="6"/>
+<text class="ttl" x="1182" y="450">Grader VM · fresh per grading</text>
+<text class="s" x="1182" y="469">runs only the candidate code</text>
+<text class="s" x="1182" y="486">no network, no credentials</text>
+<text class="s m" x="1182" y="503">hidden checks never enter it</text>
+<rect class="card" x="1170" y="528" width="252" height="86" rx="6"/>
+<text class="ttl" x="1182" y="550">Quota reader VM</text>
+<text class="s" x="1182" y="569">runs only between attempts</text>
+<text class="s" x="1182" y="586">may call only account/rateLimits/read</text>
+<text class="s m" x="1182" y="603">never uses a rate-limit reset credit</text>
+<rect class="z-open dash" x="1170" y="628" width="252" height="96" rx="6"/>
+<text class="ttl m" x="1182" y="650">Fallback, per worker CLI</text>
+<text class="s m" x="1182" y="669">if V1 or V2 fails for a CLI, or its</text>
+<text class="s m" x="1182" y="686">inner sandbox cannot start in the</text>
+<text class="s m" x="1182" y="703">guest: a dedicated worker OS account</text>
+
+<!-- Column E: outside -->
+<text class="h m" x="1476" y="120">OUTSIDE THIS MAC</text>
+<rect class="card" x="1476" y="152" width="180" height="104" rx="6"/>
+<text class="ttl" x="1488" y="174">TypeSafe Jev</text>
+<text class="s" x="1488" y="193">paid classifier API</text>
+<text class="s" x="1488" y="210">a signal, never a permission</text>
+<text class="s m" x="1488" y="227">allow-listed repos only</text>
+<text class="s m" x="1488" y="244">≤ 12 calls a task, 200 a day</text>
+<rect class="card" x="1476" y="300" width="180" height="104" rx="6"/>
+<text class="ttl" x="1488" y="322">OpenAI · ChatGPT plan</text>
+<text class="s" x="1488" y="341">Codex model calls</text>
+<text class="s m" x="1488" y="358">past 100 % it spends</text>
+<text class="s m" x="1488" y="375">bought credits; the M2</text>
+<text class="s m" x="1488" y="392">rule is Decision 8 (open)</text>
+<rect class="card dash" x="1476" y="452" width="180" height="86" rx="6"/>
+<text class="ttl" x="1488" y="474">GitHub</text>
+<rect class="chip" x="1616" y="462" width="30" height="16" rx="8"/><text class="chipt" x="1631" y="474" text-anchor="middle">M5</text>
+<text class="s" x="1488" y="493">push and PR only after</text>
+<text class="s" x="1488" y="510">your signed approval</text>
+<text class="s m" x="1488" y="527">M2 commits locally only</text>
+
+<!-- Arrows: you ↔ exchange -->
+<line class="a" x1="292" y1="200" x2="388" y2="200" marker-end="url(#ah-ink)"/>
+<circle class="n" cx="316" cy="186" r="9"/><text class="nt" x="316" y="190" text-anchor="middle">1</text>
+<text class="xs" x="330" y="190">draft</text>
+<text class="xs m" x="306" y="216">+ git bundle</text>
+<line class="a a-red" x1="292" y1="318" x2="388" y2="290" marker-end="url(#ah-red)"/>
+<text class="xs b c-red" x="322" y="288">STOP</text>
+<polyline class="a a-amber" points="292,503 360,503 360,326 388,326" marker-end="url(#ah-amber)"/>
+<circle class="n" cx="310" cy="490" r="9"/><text class="nt" x="310" y="494" text-anchor="middle">3</text>
+<circle class="n" cx="332" cy="490" r="9"/><text class="nt" x="332" y="494" text-anchor="middle">8</text>
+<text class="xs c-appr" x="302" y="522">signed</text>
+<line class="a a-muted" x1="390" y1="405" x2="296" y2="385" marker-end="url(#ah-muted)"/>
+<text class="xs m" x="318" y="410">reads</text>
+<line class="a a-muted" x1="390" y1="560" x2="296" y2="628" marker-end="url(#ah-muted)"/>
+<text class="xs m" x="340" y="612">reads</text>
+
+<!-- Arrows: exchange ↔ supervisor -->
+<line class="a" x1="542" y1="200" x2="610" y2="200" marker-end="url(#ah-ink)"/>
+<text class="xs m" x="576" y="193" text-anchor="middle">events</text>
+<line class="a" x1="612" y1="415" x2="544" y2="415" marker-end="url(#ah-ink)"/>
+<circle class="n" cx="566" cy="400" r="9"/><text class="nt" x="566" y="404" text-anchor="middle">7</text>
+<line class="a" x1="612" y1="478" x2="544" y2="545" marker-end="url(#ah-ink)"/>
+<circle class="n" cx="570" cy="530" r="9"/><text class="nt" x="570" y="534" text-anchor="middle">7</text>
+
+<!-- Arrows: supervisor ↔ VMs -->
+<line class="a" x1="1102" y1="262" x2="1168" y2="262" marker-end="url(#ah-ink)"/>
+<circle class="n" cx="1135" cy="248" r="9"/><text class="nt" x="1135" y="252" text-anchor="middle">4</text>
+<line class="a" x1="1170" y1="296" x2="1104" y2="296" marker-end="url(#ah-ink)"/>
+<circle class="n" cx="1135" cy="310" r="9"/><text class="nt" x="1135" y="314" text-anchor="middle">5</text>
+<polyline class="a" points="1102,372 1138,372 1138,470 1168,470" marker-start="url(#ah-ink)" marker-end="url(#ah-ink)"/>
+<circle class="n" cx="1138" cy="421" r="9"/><text class="nt" x="1138" y="425" text-anchor="middle">6</text>
+<line class="a" x1="1102" y1="563" x2="1168" y2="563" marker-end="url(#ah-ink)"/>
+<text class="xs m" x="1136" y="556" text-anchor="middle">quota</text>
+<line class="a" x1="1296" y1="322" x2="1296" y2="334" marker-end="url(#ah-ink)"/>
+
+<!-- Arrows: to the outside -->
+<polyline class="a" points="980,96 980,84 1640,84 1640,150" marker-end="url(#ah-ink)"/>
+<circle class="n" cx="1010" cy="84" r="9"/><text class="nt" x="1010" y="88" text-anchor="middle">2</text>
+<text class="xs" x="1026" y="79">named, size-limited, secret-scanned fields → probabilities</text>
+<line class="a" x1="1422" y1="375" x2="1474" y2="352" marker-end="url(#ah-ink)"/>
+<polyline class="a" points="1090,786 1090,796 1566,796 1566,540" marker-end="url(#ah-ink)"/>
+<circle class="n" cx="1120" cy="796" r="9"/><text class="nt" x="1120" y="800" text-anchor="middle">9</text>
+<text class="xs" x="1136" y="790">push + PR after approval (M5)</text>
+
+<!-- Arrows: code origin -->
+<line class="a a-root" x1="856" y1="806" x2="856" y2="788" marker-end="url(#ah-root)"/>
+<text class="xs c-root" x="866" y="801">every program runs from here</text>
+<polyline class="a a-root" points="292,726 460,726 460,848 594,848" marker-end="url(#ah-root)"/>
+<text class="xs c-root" x="470" y="840">installs</text>
+
+<g transform="translate(0,30)">
+<!-- Bottom band: the steps -->
+<rect class="z-open" x="24" y="890" width="532" height="296" rx="10"/>
+<text class="h" x="40" y="914">HOW ONE TASK FLOWS</text>
+<g>
+<circle class="n" cx="48" cy="938" r="9"/><text class="nt" x="48" y="942" text-anchor="middle">1</text><text class="s" x="66" y="942">You describe a change. Claude Code drafts the task and sends it with a bundle.</text>
+<circle class="n" cx="48" cy="960" r="9"/><text class="nt" x="48" y="964" text-anchor="middle">2</text><text class="s" x="66" y="964">Jev signals category and ambiguity (allow-listed repos). Code decides.</text>
+<circle class="n" cx="48" cy="982" r="9"/><text class="nt" x="48" y="986" text-anchor="middle">3</text><text class="s" x="66" y="986">You approve the task in the approval account: touch + PIN on the YubiKey.</text>
+<circle class="n" cx="48" cy="1004" r="9"/><text class="nt" x="48" y="1008" text-anchor="middle">4</text><text class="s" x="66" y="1008">Launch checks pass (quota, budget, host, no stop). The repo goes into a VM.</text>
+<circle class="n" cx="48" cy="1026" r="9"/><text class="nt" x="48" y="1030" text-anchor="middle">5</text><text class="s" x="66" y="1030">Codex works. The VM is stopped. The supervisor takes the patch out itself.</text>
+<circle class="n" cx="48" cy="1048" r="9"/><text class="nt" x="48" y="1052" text-anchor="middle">6</text><text class="s" x="66" y="1052">The candidate runs in a grader VM. The protected checker gives the verdict.</text>
+<circle class="n" cx="48" cy="1070" r="9"/><text class="nt" x="48" y="1074" text-anchor="middle">7</text><text class="s" x="66" y="1074">Evidence goes to your daily account. An inbox entry goes to the approver.</text>
+<circle class="n" cx="48" cy="1092" r="9"/><text class="nt" x="48" y="1096" text-anchor="middle">8</text><text class="s" x="66" y="1096">You read the full patch and accept it: touch + PIN.</text>
+<circle class="n" cx="48" cy="1114" r="9"/><text class="nt" x="48" y="1118" text-anchor="middle">9</text><text class="s" x="66" y="1118">M2: a local commit on a task branch. M5: push and PR after one more approval.</text>
+<line class="a a-red" x1="40" y1="1150" x2="62" y2="1150"/>
+<text class="s" x="70" y="1154"><tspan class="b c-red">STOP</tspan> at any time from your daily account, with no signature.</text>
+<text class="s m" x="70" y="1172">Only a restart signed with touch + PIN lifts it.</text>
+</g>
+
+<!-- Bottom band: learning -->
+<rect class="z-open" x="596" y="890" width="520" height="296" rx="10"/>
+<text class="h c-sup" x="612" y="914">LEARNING LADDER</text>
+<text class="s m" x="612" y="934">learns only from outcomes that the grader checked</text>
+<text class="s m" x="612" y="952">may change what the engine tries, never what it may do</text>
+<text class="s" x="612" y="978">M3 harness: A/A noise, retention and canary sets, cost per success</text>
+<text class="s" x="612" y="996">M4: shadow mode → paired comparison → promote, or "inconclusive"</text>
+<rect class="bar0" x="612" y="1120" width="76" height="30" rx="2"/>
+<rect class="bar1" x="694" y="1102" width="76" height="48" rx="2"/>
+<rect class="bar1" x="776" y="1084" width="76" height="66" rx="2"/>
+<rect class="bar3" x="858" y="1066" width="76" height="84" rx="2"/>
+<rect class="bar2" x="940" y="1048" width="76" height="102" rx="2"/>
+<rect class="bar2" x="1022" y="1030" width="76" height="120" rx="2"/>
+<text class="chipt" x="650" y="1140" text-anchor="middle">M3</text>
+<text class="xs" x="773" y="1074" text-anchor="middle">M4 picks 1 or 2</text>
+<text class="xs m" x="1019" y="1020" text-anchor="middle">only via a release you approve</text>
+<text class="xs b" x="650" y="1166" text-anchor="middle">Tier 0</text><text class="xs m" x="650" y="1180" text-anchor="middle">observe</text>
+<text class="xs b" x="732" y="1166" text-anchor="middle">Tier 1</text><text class="xs m" x="732" y="1180" text-anchor="middle">routing</text>
+<text class="xs b" x="814" y="1166" text-anchor="middle">Tier 2</text><text class="xs m" x="814" y="1180" text-anchor="middle">experience</text>
+<text class="xs b" x="896" y="1166" text-anchor="middle">Tier 3</text><text class="xs m" x="896" y="1180" text-anchor="middle">prompts, skills</text>
+<text class="xs b" x="978" y="1166" text-anchor="middle">Tier 4</text><text class="xs m" x="978" y="1180" text-anchor="middle">workflows</text>
+<text class="xs b" x="1060" y="1166" text-anchor="middle">Tier 5</text><text class="xs m" x="1060" y="1180" text-anchor="middle">engine code</text>
+
+<!-- Bottom band: parked lab -->
+<rect class="z-open dash" x="1156" y="890" width="500" height="296" rx="10"/>
+<text class="h c-vm" x="1172" y="914">PARKED LAB</text><text class="s m" x="1290" y="914">closed until you open it</text>
+<text class="s m" x="1172" y="934">opens only after the M5 review and your own decision</text>
+<rect class="z-open dash" x="1172" y="950" width="230" height="150" rx="6"/>
+<text class="ttl" x="1184" y="972">Disposable lab</text>
+<text class="s" x="1184" y="992">own host accounts and VMs</text>
+<text class="s" x="1184" y="1010">free local model, e.g. Ollama</text>
+<text class="s" x="1184" y="1028">no provider login, no git keys</text>
+<text class="s" x="1184" y="1046">its controller has its own Jev key</text>
+<text class="s m" x="1184" y="1064">hidden evaluator returns scores</text>
+<text class="s m" x="1184" y="1082">only to the controller</text>
+<line class="a" x1="1402" y1="972" x2="1430" y2="972" marker-end="url(#ah-ink)"/>
+<rect class="card" x="1432" y="950" width="210" height="44" rx="6"/>
+<text class="ttl" x="1444" y="968">Export</text>
+<text class="s m" x="1444" y="986">an untrusted proposal for you</text>
+<line class="a" x1="1537" y1="994" x2="1537" y2="1010" marker-end="url(#ah-ink)"/>
+<rect class="card" x="1432" y="1012" width="210" height="58" rx="6"/>
+<text class="ttl" x="1444" y="1030">Validation</text>
+<text class="s m" x="1444" y="1047">on the real Claude and Codex</text>
+<text class="s m" x="1444" y="1062">workers, under engine rules</text>
+<line class="a" x1="1537" y1="1070" x2="1537" y2="1084" marker-end="url(#ah-ink)"/>
+<rect class="card" x="1432" y="1086" width="210" height="44" rx="6"/>
+<text class="ttl" x="1444" y="1104">Adoption</text>
+<text class="s m" x="1444" y="1122">enters the ladder at its own tier</text>
+<polyline class="a" points="1537,1130 1537,1162 1104,1162" marker-end="url(#ah-ink)"/>
+<text class="xs m" x="1320" y="1156" text-anchor="middle">with that tier's gates</text>
+</g>
+</svg>

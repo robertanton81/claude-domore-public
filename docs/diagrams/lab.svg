@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" class="es" viewBox="0 0 1400 860" role="img" aria-label="The parked lab as fixed by its charter of 2026-09-30: a lab controller and a model server on the host under their own accounts, the learner and trial runners in VMs, a separate hidden evaluator, and the path of a proposal out of the lab through your inspection and validation on the real workers.">
+<title>claude-domore: the parked lab (charter)</title>
+<style>
+.es{--es-bg:#F3F5F8;--es-panel:#FFFFFF;--es-ink:#17202C;--es-muted:#5B6677;--es-line:#CBD2DC;--es-daily:#0B7A73;--es-appr:#B25E09;--es-sup:#3346A8;--es-vm:#7A3E9D;--es-root:#4A5463;--es-red:#C23B2E;--es-chip:#E2E7EF}
+@media (prefers-color-scheme: dark){.es{--es-bg:#0F141B;--es-panel:#171E28;--es-ink:#E4E9F0;--es-muted:#9AA5B5;--es-line:#344052;--es-daily:#3CC2B2;--es-appr:#F0A64A;--es-sup:#8FA0FF;--es-vm:#C98DEB;--es-root:#A7B1C0;--es-red:#FF7B6B;--es-chip:#243042}}
+.es text{font-family:"IBM Plex Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;font-size:12px;fill:var(--es-ink)}
+.es .bg{fill:var(--es-bg)}
+.es .h{font-size:12.5px;font-weight:700;letter-spacing:.08em}
+.es .ttl{font-size:13px;font-weight:600}
+.es .big{font-size:22px;font-weight:700}
+.es .s{font-size:11.5px}
+.es .xs{font-size:10.5px}
+.es .m{fill:var(--es-muted)}
+.es .mono{font-family:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px}
+.es .b{font-weight:700}
+.es .card{fill:var(--es-panel);stroke:var(--es-line);stroke-width:1}
+.es .z{stroke-width:1.5}
+.es .z-daily{stroke:var(--es-daily);fill:var(--es-daily);fill-opacity:.07}
+.es .z-appr{stroke:var(--es-appr);fill:var(--es-appr);fill-opacity:.08}
+.es .z-sup{stroke:var(--es-sup);fill:var(--es-sup);fill-opacity:.06}
+.es .z-vm{stroke:var(--es-vm);fill:var(--es-vm);fill-opacity:.07}
+.es .z-root{stroke:var(--es-root);fill:var(--es-root);fill-opacity:.07}
+.es .z-open{stroke:var(--es-line);fill:none}
+.es .dash{stroke-dasharray:6 4}
+.es .c-daily{fill:var(--es-daily)}.es .c-appr{fill:var(--es-appr)}.es .c-sup{fill:var(--es-sup)}.es .c-vm{fill:var(--es-vm)}.es .c-root{fill:var(--es-root)}.es .c-red{fill:var(--es-red)}
+.es .a{fill:none;stroke-width:1.6;stroke:var(--es-ink)}
+.es .a-amber{stroke:var(--es-appr);stroke-width:2}
+.es .a-red{stroke:var(--es-red);stroke-width:2;stroke-dasharray:7 4}
+.es .a-root{stroke:var(--es-root)}
+.es .a-muted{stroke:var(--es-muted)}
+.es .ah-ink{fill:var(--es-ink)}.es .ah-amber{fill:var(--es-appr)}.es .ah-red{fill:var(--es-red)}.es .ah-root{fill:var(--es-root)}.es .ah-muted{fill:var(--es-muted)}
+.es .chip{fill:var(--es-chip)}
+.es .chipt{font-size:10px;font-weight:700;letter-spacing:.04em;fill:var(--es-ink)}
+.es .n{fill:var(--es-ink)}
+.es .nt{font-size:11px;font-weight:700;fill:var(--es-bg)}
+.es .pill{fill:var(--es-panel);stroke:var(--es-sup);stroke-width:1}
+.es .pill-side{fill:none;stroke:var(--es-line);stroke-width:1}
+.es .key{fill:var(--es-ink)}
+.es .keydot{fill:var(--es-appr)}
+.es .bar0{fill:var(--es-sup);fill-opacity:.55}
+.es .bar1{fill:var(--es-sup);fill-opacity:.35}
+.es .bar3{fill:var(--es-sup);fill-opacity:.2}
+.es .bar2{fill:var(--es-sup);fill-opacity:.15;stroke:var(--es-sup);stroke-width:1;stroke-dasharray:4 3}
+</style>
+<defs>
+<marker id="lab-ah-ink" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path class="ah-ink" d="M0 0 L10 5 L0 10 z"/></marker>
+<marker id="lab-ah-amber" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path class="ah-amber" d="M0 0 L10 5 L0 10 z"/></marker>
+<marker id="lab-ah-red" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path class="ah-red" d="M0 0 L10 5 L0 10 z"/></marker>
+<marker id="lab-ah-root" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path class="ah-root" d="M0 0 L10 5 L0 10 z"/></marker>
+<marker id="lab-ah-muted" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path class="ah-muted" d="M0 0 L10 5 L0 10 z"/></marker>
+</defs>
+<rect class="bg" x="0" y="0" width="1400" height="860"/>
+<text class="big" x="24" y="40">claude-domore · the parked lab</text>
+<text class="s m" x="24" y="64">Charter of 2026-09-30. Closed until M1–M4 pass, the M5 review and your decision. The learner may change its own harness; the measurement stays outside.</text>
+<line class="a" x1="1080" y1="30" x2="1116" y2="30" marker-end="url(#lab-ah-ink)"/><text class="xs m" x="1124" y="34">call or data</text>
+<line class="a a-red" x1="1210" y1="30" x2="1246" y2="30"/><text class="xs m" x="1254" y="34">never allowed</text>
+
+<rect class="z-open" x="24" y="84" width="1352" height="52" rx="8"/>
+<text class="h c-vm" x="40" y="106">RESEARCH QUESTION</text>
+<text class="s" x="214" y="106">Do harness changes found on a fixed local model beat the unchanged engine on hidden tasks,</text>
+<text class="s" x="214" y="124">when the validation stage re-tests them on the real workers? Equal run budgets · within the regression limits · per provider.</text>
+
+<!-- export route above the regions -->
+<polyline class="a" points="380,206 380,152 1178,152 1178,204" marker-end="url(#lab-ah-ink)"/>
+<text class="xs" x="560" y="147">export: an untrusted proposal (diff, lineage, lab evidence)</text>
+
+<!-- Host -->
+<rect class="z z-root" x="24" y="170" width="396" height="430" rx="10"/>
+<text class="h c-root" x="40" y="194">HOST</text><text class="s m" x="92" y="194">own accounts, none of them the engine's</text>
+<rect class="z z-appr" x="40" y="206" width="364" height="160" rx="6"/>
+<text class="ttl c-appr" x="54" y="228">Lab controller · own OS account</text>
+<text class="s" x="54" y="248">the stop switch and the budget counters</text>
+<text class="s" x="54" y="266">the lineage database: every variant,</text>
+<text class="s" x="54" y="282">its parent, diff, evidence and scores</text>
+<text class="s" x="54" y="302">the only model-call interface</text>
+<text class="s" x="54" y="320">the lab's own Jev key</text>
+<text class="s m" x="54" y="340">holds no provider login</text>
+<text class="s m" x="54" y="356">starts every job; ends them at a limit or a stop</text>
+<rect class="card" x="40" y="392" width="364" height="126" rx="6"/>
+<text class="ttl" x="54" y="414">Model server · second OS account</text>
+<text class="s" x="54" y="434">the local model, running natively with GPU access</text>
+<text class="s" x="54" y="452">reaches nothing outside its own folders</text>
+<text class="s m" x="54" y="470">no Jev key · no hidden tasks · no lineage</text>
+<text class="s m" x="54" y="488">no session state or cache across calls</text>
+<text class="s m" x="54" y="506">only the controller reaches it (tested at opening)</text>
+<rect class="z-open dash" x="40" y="534" width="364" height="52" rx="6"/>
+<text class="s m" x="54" y="556">Option: the model on the CPU inside a VM,</text>
+<text class="s m" x="54" y="574">if it is fast enough when the lab opens</text>
+<line class="a" x1="222" y1="366" x2="222" y2="390" marker-end="url(#lab-ah-ink)"/>
+<text class="xs m" x="232" y="382">forwards each call</text>
+
+<!-- Lab VMs -->
+<rect class="z z-vm" x="500" y="170" width="400" height="330" rx="10"/>
+<text class="h c-vm" x="516" y="194">LAB VMs</text><text class="s m" x="600" y="194">Apple container · no GPU in a VM</text>
+<text class="s m" x="516" y="212">network: only the controller's model-call interface</text>
+<rect class="card" x="516" y="224" width="368" height="112" rx="6"/>
+<text class="ttl" x="530" y="246">Learner VM</text>
+<text class="s" x="530" y="266">may change anything, only inside its variant folder:</text>
+<text class="s" x="530" y="284">prompts · skills · tool descriptions</text>
+<text class="s" x="530" y="302">workflow code and harness code</text>
+<text class="s" x="530" y="320">proposal logic and parent selection</text>
+<rect class="card" x="516" y="348" width="368" height="64" rx="6"/>
+<text class="ttl" x="530" y="370">Candidate runner VM</text>
+<text class="s m" x="530" y="390">new workspace per trial · one candidate,</text>
+<text class="s m" x="530" y="406">one visible task</text>
+<rect class="card" x="516" y="422" width="368" height="64" rx="6"/>
+<text class="ttl" x="530" y="444">Hidden-task runner VM</text>
+<text class="s m" x="530" y="464">one candidate and a hidden task's statement,</text>
+<text class="s m" x="530" y="480">never its tests or its reference fix</text>
+
+<rect class="z-open" x="500" y="518" width="400" height="82" rx="10"/>
+<text class="ttl" x="516" y="540">Hidden evaluator · own process and boundary</text>
+<text class="s" x="516" y="560">holds the hidden tests, grades each snapshot</text>
+<text class="s m" x="516" y="578">returns scores only, and only to the controller</text>
+<text class="s m" x="516" y="594">changes only between epochs, by a process you approve</text>
+<line class="a" x1="700" y1="486" x2="700" y2="516" marker-end="url(#lab-ah-ink)"/>
+<text class="xs m" x="710" y="512">snapshot</text>
+
+<!-- host <-> VMs -->
+<line class="a" x1="514" y1="258" x2="406" y2="258" marker-end="url(#lab-ah-ink)"/>
+<text class="xs" x="460" y="251" text-anchor="middle">model calls</text>
+<line class="a" x1="406" y1="232" x2="514" y2="232" marker-end="url(#lab-ah-ink)"/>
+<text class="xs m" x="460" y="226" text-anchor="middle">1 summary/epoch</text>
+<polyline class="a" points="404,330 450,330 450,454 514,454" marker-end="url(#lab-ah-ink)"/>
+<line class="a" x1="450" y1="380" x2="514" y2="380" marker-end="url(#lab-ah-ink)"/>
+<text class="xs m" x="455" y="372">trials</text>
+<polyline class="a" points="500,570 488,570 488,300 406,300" marker-end="url(#lab-ah-ink)"/>
+<text class="xs m" x="442" y="294" text-anchor="middle">scores</text>
+
+<!-- Outside the lab -->
+<rect class="z-open" x="980" y="170" width="396" height="430" rx="10"/>
+<text class="h" x="996" y="194">OUTSIDE THE LAB</text>
+<rect class="z z-daily" x="996" y="206" width="364" height="76" rx="6"/>
+<text class="ttl c-daily" x="1010" y="228">You</text>
+<text class="s" x="1010" y="248">inspect each export: diff, lineage, evidence</text>
+<text class="s m" x="1010" y="266">approve the evaluation plan and the limits</text>
+<rect class="z z-sup" x="996" y="302" width="364" height="112" rx="6"/>
+<text class="ttl c-sup" x="1010" y="324">Validation stage · main engine</text>
+<text class="s" x="1010" y="344">re-tests the proposal on the real Claude</text>
+<text class="s" x="1010" y="360">and Codex workers, on held-out tasks</text>
+<text class="s m" x="1010" y="380">engine rules: containment, grader, budget, approval</text>
+<text class="s m" x="1010" y="398">holds the provider login; never writes into the lab</text>
+<rect class="card" x="996" y="434" width="364" height="92" rx="6"/>
+<text class="ttl" x="1010" y="456">Learning ladder · adoption</text>
+<text class="s" x="1010" y="476">enters at its own tier, with its gates</text>
+<text class="s m" x="1010" y="494">Tiers 4–5 only in a release you approve</text>
+<text class="s m" x="1010" y="512">(Decisions 9 and 30)</text>
+<text class="s m" x="996" y="552">No lab account or VM can reach the engine's</text>
+<text class="s m" x="996" y="570">accounts, data or logins, or your home folder.</text>
+<line class="a" x1="1178" y1="282" x2="1178" y2="300" marker-end="url(#lab-ah-ink)"/>
+<line class="a" x1="1178" y1="414" x2="1178" y2="432" marker-end="url(#lab-ah-ink)"/>
+<line class="a a-red" x1="994" y1="358" x2="908" y2="358"/>
+<text class="s b c-red" x="902" y="363" text-anchor="end">✕</text>
+<text class="xs c-red" x="950" y="350" text-anchor="middle">results never</text>
+<text class="xs c-red" x="950" y="376" text-anchor="middle">feed selection</text>
+<text class="xs c-red" x="950" y="390" text-anchor="middle">in the lab</text>
+
+<!-- Protected core -->
+<rect class="z z-appr" x="24" y="620" width="1352" height="76" rx="10"/>
+<text class="h c-appr" x="40" y="644">PROTECTED CORE</text><text class="s m" x="200" y="644">the learner never changes it</text>
+<text class="s" x="40" y="666">evaluator, hidden and anchor sets, evaluation plan · acceptance and promotion rules · budget and stop switch · evidence integrity and lineage log · lab boundary · provider adapters · credential access</text>
+<text class="s m" x="40" y="686">task authorization · permissions and sandbox profile · effect execution · no training on provider or Jev outputs · fixed per experiment: weights, runtime, launch settings</text>
+
+<!-- Bottom: disk, first run, opening -->
+<rect class="z-open" x="24" y="716" width="440" height="124" rx="10"/>
+<text class="h" x="40" y="740">DISK AND MEMORY</text>
+<text class="s" x="40" y="762">own budget for models, VM images, workspaces,</text>
+<text class="s" x="40" y="780">exports, logs, lineage; never the engine's 30 GB reserve</text>
+<text class="s" x="40" y="800">model-server memory limit and kill: tested before opening</text>
+<text class="s m" x="40" y="820">free disk must cover the weights and the reserve</text>
+<rect class="z-open" x="480" y="716" width="440" height="124" rx="10"/>
+<text class="h" x="496" y="740">FIRST RUN</text>
+<text class="s" x="496" y="762">a few epochs, one task family</text>
+<text class="s" x="496" y="780">tests the machinery: limits, stop, lineage, exports, kill criteria</text>
+<text class="s" x="496" y="800">it is not evidence of a gain</text>
+<text class="s m" x="496" y="820">"inconclusive, no promotion" is a valid result</text>
+<rect class="z-open" x="936" y="716" width="440" height="124" rx="10"/>
+<text class="h" x="952" y="740">OPENS WHEN</text>
+<text class="s" x="952" y="762">each of the 11 preconditions has evidence</text>
+<text class="s" x="952" y="780">evidence: M1–M4 records, M3–M5 checks, opening tests</text>
+<text class="s" x="952" y="800">a line without evidence keeps it closed</text>
+<text class="s m" x="952" y="820">then your own decision</text>
+</svg>

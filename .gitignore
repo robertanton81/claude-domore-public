@@ -1,0 +1,24 @@
+# Secrets: never commit these
+.env
+.env.*
+*.key
+*.pem
+auth.json
+.credentials.json
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.mypy_cache/
+.pytest_cache/
+
+# Engine data and local state
+*.sqlite
+*.sqlite3
+*.db
+data/
+
+# macOS
+.DS_Store
